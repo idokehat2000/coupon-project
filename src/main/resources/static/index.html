@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Coupon System Login</title>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+ <style>
+
+ </style>
+    <script>
+    
+    $(function(){
+    	$("#loginBtn").click(function(){
+    		
+    		$.ajax({
+    		
+    			url:"/LoginController/login/"+$("#email").val()+"/"+ $("#password").val()+"/"+$("#type").val(),
+    			type:"POST",
+    			success: function(token){
+    				console.log(token)
+    				localStorage.myToken= token;
+    				let email = $("#email").val()
+    				localStorage.email = email;
+    				
+    				
+    				switch($("#type").val()){
+    				
+    				case "Administrator":
+    					//location.href="http://localhost:4200"
+    				 location.href="admin/index.html"
+    				break;
+    				case "Company":
+    					//location.href="http://localhost:4200"
+    				 location.href="company/index.html"
+    				break;
+    				case "Customer":
+    					//location.href="http://localhost:4200"
+    				 location.href="customer/index.html"
+    				break;
+    				}
+    			}, error: function(error){
+    				console.log("oops! invalid login...")
+    				console.log(error)
+    				alert("oops login failed !")
+    				
+    			}
+    			
+    			
+    			
+    			
+    		})
+    		
+    		
+    		
+    	})
+    })
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    //   $(function () {
+         //   $("#loginBtn").click(function () {
+            	
+            //    let email = $("#email").val()
+           //     let password = $("#password").val()
+            //    let type = $("#type").val()
+            //    $.post("/LoginController/login/" + email +"/" + password + "/" + type, null, function (token) {
+            //        localStorage.myToken = token;
+           //         console.log(token)
+            //        console.log(type)
+
+                    
+           //         switch(type){
+           //             case "Administrator":
+           //             location.href="http://localhost:4200"
+           //             break;
+         //              case "Company":
+          //              location.href="http://localhost:4200"
+          //             break;
+          //              case "Customer":
+          //              location.href="http://localhost:4200"
+         //               break;
+         //           }
+                    
+        //        })
+
+     //       })
+     //   })
+    </script>
+</head>
+
+<body>
+    <h1>Coupon System Login</h1>
+    <form>
+        <input type="email" placeholder="email" id="email" /><br />
+        <input type="password" placeholder="password" id="password" /><br />
+        <select id="type">
+            <option>Administrator</option>
+            <option>Company</option>
+            <option>Customer</option>
+        </select>
+        <input type="button" value="Login" id="loginBtn" /><br />
+    </form>
+</body>
+
+
+</html>
