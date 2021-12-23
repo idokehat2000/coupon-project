@@ -8,11 +8,7 @@
 * admin can delete company.
 
 ## Technologies:
-### (BE)
 * Java, spring boot framwork, mysql relational DB.
-
-### (FE)
-* Typescript, CSS, HTML, angular framwork.
 
 ### other:
 * Rest api 
